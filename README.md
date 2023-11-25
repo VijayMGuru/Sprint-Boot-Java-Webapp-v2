@@ -101,7 +101,7 @@ With the **Dockerfile** we can define, configure and initialize our image and co
 4. The files we need to copy into our image. We will need only the **Uber Jar** file so let's copy it into the working dir;
 
 ```
-	COPY /target/docker-java-app-example.jar /app
+	COPY /target/docker-java-app-prod.jar /app
 ```
 
 5. The port number(s) that we need to expose to reach out from the container. Spring Boot default port is 8080;
@@ -113,7 +113,7 @@ With the **Dockerfile** we can define, configure and initialize our image and co
 6. The commands that we need to run as the container goes live. And we need to add simply "java -jar <jar_file>.jar" format;
 
 ```
-	CMD ["java", "-jar", "docker-java-app-example.jar"]
+	CMD ["java", "-jar", "docker-java-app-prod.jar"]
 ```
 
 Notify that the CMD(command) parameters are separated with comma.
@@ -129,16 +129,16 @@ Then our **Dockerfile** will be as below;
 	RUN apk update && apk add bash
 	
 	# Set the working directory to /app
-	WORKDIR /app
+	WORKDIR /webapp-v2
 	
-	# Copy the fat jar into the container at /app
-	COPY /target/docker-java-app-example.jar /app
+	# Copy the fat jar into the container at /webapp-v2
+	COPY /target/docker-java-app-prod.jar /webapp-v2
 	
 	# Make port 8080 available to the world outside this container
 	EXPOSE 8080
 	
 	# Run jar file when the container launches
-	CMD ["java", "-jar", "docker-java-app-example.jar"]
+	CMD ["java", "-jar", "docker-java-app-prod.jar"]
 ```
 
 Now our [Dockerfile](https://github.com/bzdgn/docker-spring-boot-java-web-service-example/blob/master/Dockerfile) is all set, we can directly build the image.
@@ -160,7 +160,7 @@ To build the image, we will use **docker build** command and tag it. The last pa
 we point to the current directory. So you must run this command on the top level directory of this repository.
 
 ```
-	docker build --tag=docker-java-hello-world-app .
+	docker build --tag=spring-boot-app-v2 .
 ```
 
 As you run the command which is written above, a successful example output will be as below;
@@ -191,13 +191,13 @@ As you run the command which is written above, a successful example output will 
 	 ---> Running in c94cbad8627a
 	Removing intermediate container c94cbad8627a
 	 ---> 5a58ac387fe7
-	Step 4/6 : COPY /target/docker-java-app-example.jar /app
+	Step 4/6 : COPY /target/docker-java-app-prod.jar /app
 	 ---> aa5930ee4a75
 	Step 5/6 : EXPOSE 8080
 	 ---> Running in 851b519d4514
 	Removing intermediate container 851b519d4514
 	 ---> 210ed5d1dc3f
-	Step 6/6 : CMD ["java", "-jar", "docker-java-app-example.jar"]
+	Step 6/6 : CMD ["java", "-jar", "docker-java-app-prod.jar"]
 	 ---> Running in 55b84275e095
 	Removing intermediate container 55b84275e095
 	 ---> a0c355a25236
@@ -344,7 +344,7 @@ C:\00_ANA\JavaEE\WS\docker-java-app-example>
 2. Docker build
 
 ```
-	docker build --tag=docker-java-hello-world-app .
+	docker build --tag=spring-boot-app-v2 .
 ```
 
 3. Docker run
@@ -356,7 +356,7 @@ C:\00_ANA\JavaEE\WS\docker-java-app-example>
 4. Test the app
 
 ```
-	http://localhost/docker-java-app/test
+	http://localhost/docker-java-app/prod
 ```
 
 5. Get the container id
