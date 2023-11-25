@@ -3,13 +3,13 @@ FROM openjdk:8-jre-alpine
 LABEL maintainer="VJ"
 # set shell to bash
 # source: https://stackoverflow.com/a/40944512/3128926
-RUN apt-get update && apt-get install bash
+RUN apk update && apk add bash
 
 # Set the working directory to /app
-WORKDIR /webapps
+WORKDIR /webapp-v2
 
 # Copy the fat jar into the container at /app
-COPY /target/docker-java-app-prod.jar /webapps/app
+COPY /target/docker-java-app-prod.jar /webapp-v2
 
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
