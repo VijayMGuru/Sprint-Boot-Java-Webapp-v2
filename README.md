@@ -379,3 +379,23 @@ C:\00_ANA\JavaEE\WS\docker-java-app-example>
 
 
 [Go back to TOC](#toc)
+
+Git:
+git clone https://github.com/VijayMGuru/Sprint-Boot-Java-Webapp-v2.git
+
+If you make any changes on Git Repos then you need to pull before run dockerfile
+git pull https://github.com/VijayMGuru/Sprint-Boot-Java-Webapp-v2.git
+
+mvn clean install
+
+docker build -t spring-boot-app-v2 .
+docker images
+docker run --name myspringboot -p 80:8080 spring-boot-app-v2:latest (to test the app - copy the public ip and port 80/docker-java-app/prod)
+
+create a tag before push to DockerHub repo.
+docker login
+***Provide the docker credentials
+docker tag <image name & version> <dockerrepo:tag>
+e.g. docker tag spring-boot-app-v2:latest vijaymguru/spring-boot-app:v2
+docker push vijaymguru/spring-boot-app:v2
+
