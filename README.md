@@ -350,7 +350,7 @@ C:\00_ANA\JavaEE\WS\docker-java-app-example>
 3. Docker run
 
 ```
-	docker run -p 80:8080 docker-java-hello-world-app
+	docker run -p 80:8080 spring-boot-app-v2
 ```
 
 4. Test the app
