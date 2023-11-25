@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.levo.dockerexample</groupId>
-    <artifactId>docker-java-app-example</artifactId>
+    <artifactId>docker-java-app-prod</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>docker-java-app-example</name>
+    <name>docker-java-app-prod</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -29,7 +29,7 @@
     </dependencies>
 
     <build>
-    	<finalName>docker-java-app-example</finalName>
+    	<finalName>docker-java-app-prod</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
